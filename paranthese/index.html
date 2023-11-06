@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vérification de Parenthèses</title>
+</head>
+<body>
+    <h1>Vérification de Parenthèses</h1>
+    <form method="POST" action="{% url 'verifier_parentheses' %}">
+        {% csrf_token %}
+        <label for="chaine">Entrez la chaîne de caractères :</label>
+        <input type="text" name="chaine" id="chaine">
+        <button type="submit">Vérifier</button>
+    </form>
+    <div id="resultat">
+        {% if resultat_text %}
+            <p class="vert">La chaîne est bien parenthésée.</p>
+            <p class="vert">{{ resultat_text }}</p>
+        {% elif resultat_text == False %}
+            <p class="rouge">La chaîne n'est pas bien parenthésée.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
